@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "286922477138",
+    "firebase_url": "https://mad-research.firebaseio.com",
+    "project_id": "mad-research",
+    "storage_bucket": "mad-research.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286922477138:android:b4afd2d51a1ba57a",
+        "android_client_info": {
+          "package_name": "joerismits.mad.ica.han.nl.mad_research"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286922477138-fmpod5a98odonnftv81hnh3sojludpll.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1JWDd23me2UsBjz1a0emlqtx6F6--zuY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
