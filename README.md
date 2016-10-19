@@ -1,5 +1,5 @@
 # Instructies
-Blijf in de master branche werken. Maak een map aan met als naam de database naam. Maak hierin een map aan genaamd Android en iOS. Zet hierin de implementatie.
+Maak je eigen branche aan met als naam de DB naam. Maak een map aan met als naam de database naam. Maak hierin een map aan genaamd Android en iOS. Zet hierin de implementatie.
 
 ```
 DB Naam
