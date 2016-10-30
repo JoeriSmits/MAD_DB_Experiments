@@ -2,10 +2,16 @@ package nl.han.ica.mad.leveldb;
 
 import android.content.Context;
 
+import com.github.hf.leveldb.Iterator;
 import com.github.hf.leveldb.LevelDB;
 import com.github.hf.leveldb.exception.LevelDBException;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import nl.han.ica.mad.leveldb.model.Weather;
+import nl.han.ica.mad.leveldb.model.Wind;
 
 /**
  * @author Niels Bokmans
@@ -15,37 +21,58 @@ import nl.han.ica.mad.leveldb.model.Weather;
 
 public class LevelDBHandler {
 
-    private static final String LEVEL_DB_PATH = "/db/leveldb";
-
-    private LevelDB db;
     private Context context;
 
-    /**
-     * Creates a new LevelDB handler.
-     *
-     * @param context The context the LevelDB is being opened from (eg. Activity or Fragment)
-     * @throws LevelDBException if there was a problem creating or opening the database file
-     */
-    public LevelDBHandler(Context context) throws LevelDBException {
+    public LevelDBHandler(Context context) {
         this.context = context;
-        db = getInstance();
+    }
+    public List<String> getAllWeatherIds() throws LevelDBException {
+        final LevelDB currentInstance = getInstance();
+        List<String> knownIds = new ArrayList<>();
+        Iterator iterator = currentInstance.iterator();
+        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String currentKeyId = new String(iterator.key()).split("-")[0];
+            if (!knownIds.contains(currentKeyId)) {
+                knownIds.add(currentKeyId);
+            }
+        }
+        currentInstance.close();
+        return knownIds;
     }
 
-    public void put(Weather wather) throws LevelDBException {
-        LevelDB currentInstance = getInstance();
+    public Weather get(String weatherId) throws LevelDBException {
+        final LevelDB currentInstance = getInstance();
+        byte[] dateKey = getKey(weatherId, "date");
+        byte[] forecastKey = getKey(weatherId, "forecast");
+        byte[] humidityKey = getKey(weatherId, "humidity");
+        byte[] windDirectionKey = getKey(weatherId, "wind-direction");
+        byte[] windSpeedKey = getKey(weatherId, "wind-speed");
+        String date = new String(currentInstance.get(dateKey));
+        String forecast = new String(currentInstance.get(forecastKey));
+        String humidity = new String(currentInstance.get(humidityKey));
+        String windDirection = new String(currentInstance.get(windDirectionKey));
+        String windSpeed = new String(currentInstance.get(windSpeedKey));
+        currentInstance.close();
 
+        Wind wind = new Wind(windDirection, windSpeed);
+        return new Weather(weatherId, date, forecast, humidity, wind);
+    }
+
+    public void put(Weather weather) throws LevelDBException {
+        final LevelDB currentInstance = getInstance();
+        for (Map.Entry<byte[], byte[]> keyValues : weather.getSerialized().entrySet()) {
+            currentInstance.put(keyValues.getKey(), keyValues.getValue());
+        }
+        currentInstance.close();
+    }
+
+    private byte[] getKey(String weatherId, String keyName) {
+        return (weatherId + "-" + keyName).getBytes();
     }
 
     private LevelDB getInstance() throws LevelDBException {
-        if (db == null || db.isClosed()) {
-            db = LevelDB.open(LEVEL_DB_PATH, LevelDB.configure().createIfMissing(true));
-        }
-        return db;
+        String path = context.getCacheDir().getPath();
+        return LevelDB.open(context.getCacheDir().getPath() + "/leveldb.db", LevelDB.configure().createIfMissing(true));
     }
 
-    private void close() {
-        if (db != null && !db.isClosed()) {
-            db.close();
-        }
-    }
 }
