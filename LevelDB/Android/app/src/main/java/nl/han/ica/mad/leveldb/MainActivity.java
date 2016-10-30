@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         );
         listView.setAdapter(weatherArrayAdapter);
 
-        //Set button listener
+        //Set button listeners
         final Button writeDataButton = (Button) findViewById(R.id.writeDataBtn);
         writeDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,11 +49,20 @@ public class MainActivity extends AppCompatActivity {
                 writeData();
             }
         });
+
+        final Button clearDataButton = (Button) findViewById(R.id.clearDataBtn);
+        clearDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clearData();
+            }
+        });
+
         //Read data
         readData();
     }
 
-    public void readData() {
+    private void readData() {
         final LevelDBHandler handler = new LevelDBHandler(this);
         weatherArrayList.clear();
         try {
@@ -76,5 +85,16 @@ public class MainActivity extends AppCompatActivity {
                 Log.e("LevelDBWrite", e.getMessage());
             }
         }
+        readData();
+    }
+
+    private void clearData() {
+        final LevelDBHandler handler = new LevelDBHandler(this);
+        try {
+            handler.clear();
+        } catch (LevelDBException e) {
+            Log.e("LevelDBClear", e.getMessage());
+        }
+        readData();
     }
 }

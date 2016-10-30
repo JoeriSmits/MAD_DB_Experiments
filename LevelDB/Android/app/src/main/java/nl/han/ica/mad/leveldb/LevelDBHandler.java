@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.github.hf.leveldb.Iterator;
 import com.github.hf.leveldb.LevelDB;
+import com.github.hf.leveldb.Snapshot;
 import com.github.hf.leveldb.exception.LevelDBException;
 
 import java.util.ArrayList;
@@ -25,19 +26,6 @@ public class LevelDBHandler {
 
     public LevelDBHandler(Context context) {
         this.context = context;
-    }
-    public List<String> getAllWeatherIds() throws LevelDBException {
-        final LevelDB currentInstance = getInstance();
-        List<String> knownIds = new ArrayList<>();
-        Iterator iterator = currentInstance.iterator();
-        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-            String currentKeyId = new String(iterator.key()).split("-")[0];
-            if (!knownIds.contains(currentKeyId)) {
-                knownIds.add(currentKeyId);
-            }
-        }
-        currentInstance.close();
-        return knownIds;
     }
 
     public Weather get(String weatherId) throws LevelDBException {
@@ -66,12 +54,34 @@ public class LevelDBHandler {
         currentInstance.close();
     }
 
+    public void clear() throws LevelDBException {
+        final LevelDB currentInstance = getInstance();
+        final Iterator iterator = currentInstance.iterator();
+        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            currentInstance.del(iterator.key());
+        }
+        currentInstance.close();
+    }
+
+    public List<String> getAllWeatherIds() throws LevelDBException {
+        final LevelDB currentInstance = getInstance();
+        final List<String> knownIds = new ArrayList<>();
+        final Iterator iterator = currentInstance.iterator();
+        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String currentKeyId = new String(iterator.key()).split("-")[0];
+            if (!knownIds.contains(currentKeyId)) {
+                knownIds.add(currentKeyId);
+            }
+        }
+        currentInstance.close();
+        return knownIds;
+    }
+
     private byte[] getKey(String weatherId, String keyName) {
         return (weatherId + "-" + keyName).getBytes();
     }
 
     private LevelDB getInstance() throws LevelDBException {
-        String path = context.getCacheDir().getPath();
         return LevelDB.open(context.getCacheDir().getPath() + "/leveldb.db", LevelDB.configure().createIfMissing(true));
     }
 
