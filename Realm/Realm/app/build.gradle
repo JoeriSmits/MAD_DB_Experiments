@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'realm-android'
 
 android {
+    def host = "185.14.186.238"
     compileSdkVersion 24
     buildToolsVersion "24.0.2"
     defaultConfig {
@@ -11,13 +12,27 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "OBJECT_SERVER_IP", "\"${host}\""
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "OBJECT_SERVER_IP", "\"${host}\""
         }
     }
+    signingConfigs {
+        config {
+            storeFile rootProject.file("keystore/debug.keystore")
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+}
+
+realm {
+    syncEnabled = true
 }
 
 dependencies {

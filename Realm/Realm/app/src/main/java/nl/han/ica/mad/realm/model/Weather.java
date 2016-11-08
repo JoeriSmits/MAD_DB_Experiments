@@ -33,7 +33,7 @@ public class Weather extends RealmObject {
         wind.speed = "100";
         weather.id = getNextKey(realm);
         weather.date = formattedDate;
-        weather.forecast = "Very nice weather";
+        weather.forecast = "Nice weather";
         weather.humidity = "40%";
         weather.wind = wind;
         return weather;
