@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity implements SyncUser.Callback
 
     private Realm realm;
     private RealmListAdapter adapter;
+    private ListView listView;
+    private Button writeDataButton;
     private RealmResults<Weather> weatherItems;
 
     public void attemptLogin(boolean create){
@@ -34,8 +36,23 @@ public class MainActivity extends AppCompatActivity implements SyncUser.Callback
 
         attemptLogin(false);
 
-        final ListView listView = (ListView) findViewById(R.id.list);
-        final Button writeDataButton = (Button) findViewById(R.id.writeDataBtn);
+        listView = (ListView) findViewById(R.id.list);
+        writeDataButton = (Button) findViewById(R.id.writeDataBtn);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        realm.close();
+        UserManager.logoutActiveUser();
+    }
+
+    // Login success
+    @Override
+    public void onSuccess(SyncUser user) {
+        Log.v("hoi", "ik ben ingelogd");
+        UserManager.setActiveUser(user);
+
         writeDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,20 +100,6 @@ public class MainActivity extends AppCompatActivity implements SyncUser.Callback
                 adapter.notifyDataSetChanged();
             }
         });
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        realm.close();
-        UserManager.logoutActiveUser();
-    }
-
-    // Login success
-    @Override
-    public void onSuccess(SyncUser user) {
-        Log.v("hoi", "ik ben ingelogd");
-        UserManager.setActiveUser(user);
     }
 
     @Override

@@ -23,10 +23,5 @@ public class WeatherApplication extends Application {
         super.onCreate();
         Realm.init(this);
         RealmLog.add(new AndroidLogger(Log.VERBOSE));
-        RealmConfiguration config = new RealmConfiguration
-                .Builder()
-                .deleteRealmIfMigrationNeeded()
-                .build();
-        Realm.setDefaultConfiguration(config);
     }
 }
