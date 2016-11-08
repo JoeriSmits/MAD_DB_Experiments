@@ -72,7 +72,7 @@ public class MainActivity extends Activity{
         // Add an attachment
         addAttachment(database, documentId);
         /* Get and output the contents with the attachment */
-        outputContentsWithAttachment(database, documentId);
+        //outputContentsWithAttachment(database, documentId);
         /* Get and delete the document from the database */
         //deleteDocument(database, documentId);
         Log.d(TAG, "End Couchbase Events App");
@@ -221,8 +221,13 @@ public class MainActivity extends Activity{
         Document document = database.createDocument();
         String documentId = document.getId();
         Map<String, Object> map = new HashMap<String, Object>();
-        map.put("name", "Big Party");
-        map.put("location", "My House");
+        Map<String, Object> subMap = new HashMap<String, Object>();
+        map.put("date", "2016-10-26");
+        map.put("forecast", "Sunny");
+        map.put("humidity", "80%");
+        subMap.put("direction", 280);
+        subMap.put("speed", "50 knots");
+        map.put("wind", subMap);
         try {
             // Save the properties to the document
             document.putProperties(map);
