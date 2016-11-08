@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FFC704FB-AE8C-4615-B4B1-58404E880CB7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>MAD_Research</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BCE0F07049CCB879641EFB1EBCB02DB7F666F38A</key>
+		<string>https://github.com/JoeriSmits/MAD_DB_Experiments.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Firebase/iOS/MAD_Research/MAD_Research.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BCE0F07049CCB879641EFB1EBCB02DB7F666F38A</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/JoeriSmits/MAD_DB_Experiments.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BCE0F07049CCB879641EFB1EBCB02DB7F666F38A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BCE0F07049CCB879641EFB1EBCB02DB7F666F38A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>MAD_DB_Experiments</string>
+		</dict>
+	</array>
+</dict>
+</plist>
