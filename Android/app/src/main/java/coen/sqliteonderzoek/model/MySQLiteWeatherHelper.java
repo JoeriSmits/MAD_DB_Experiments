@@ -37,7 +37,7 @@ public class MySQLiteWeatherHelper extends SQLiteOpenHelper
                 WEATHER_KEY_FORECAST+" TEXT, "+
                 WEATHER_KEY_HUMIDITY+" TEXT, "+
                 WEATHER_KEY_WIND+" INTEGER, " +
-                "FOREIGN KEY(wind) REFERENCES "+TABLE_WIND+ "("+WIND_KEY_ID+") ON UPDATE CASCADE ON DELETE CASCADE )";
+                "FOREIGN KEY("+WEATHER_KEY_WIND+") REFERENCES "+TABLE_WIND+ "("+WIND_KEY_ID+") ON UPDATE CASCADE ON DELETE CASCADE )";
 
         // create tables
         db.execSQL(CREATE_WIND_TABLE);
