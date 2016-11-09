@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5800CBBF1DD25C0A00DEE58A /* WeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800CBBE1DD25C0A00DEE58A /* WeatherTableViewCell.swift */; };
 		5800CBC11DD25EA600DEE58A /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800CBC01DD25EA600DEE58A /* WeatherTableViewController.swift */; };
+		5800CBC31DD26C8900DEE58A /* EditWeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5800CBC21DD26C8900DEE58A /* EditWeatherViewController.swift */; };
 		587EA3B61DCA3A420025A234 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587EA3B51DCA3A420025A234 /* AppDelegate.swift */; };
 		587EA3BB1DCA3A420025A234 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 587EA3B91DCA3A420025A234 /* Main.storyboard */; };
 		587EA3BD1DCA3A420025A234 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 587EA3BC1DCA3A420025A234 /* Assets.xcassets */; };
@@ -20,7 +21,8 @@
 /* Begin PBXFileReference section */
 		4C328D6CE27FCA3A9A025578 /* Pods-iOSRealm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iOSRealm.release.xcconfig"; path = "Pods/Target Support Files/Pods-iOSRealm/Pods-iOSRealm.release.xcconfig"; sourceTree = "<group>"; };
 		5800CBBE1DD25C0A00DEE58A /* WeatherTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherTableViewCell.swift; sourceTree = "<group>"; };
-		5800CBC01DD25EA600DEE58A /* WeatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherTableViewController.swift; path = ../WeatherTableViewController.swift; sourceTree = "<group>"; };
+		5800CBC01DD25EA600DEE58A /* WeatherTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeatherTableViewController.swift; path = /Users/nielsbokmans/Desktop/iOSRealm/iOSRealm/WeatherTableViewController.swift; sourceTree = "<absolute>"; };
+		5800CBC21DD26C8900DEE58A /* EditWeatherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditWeatherViewController.swift; sourceTree = "<group>"; };
 		587EA3B21DCA3A420025A234 /* iOSRealm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSRealm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		587EA3B51DCA3A420025A234 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		587EA3BA1DCA3A420025A234 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				587EA3BC1DCA3A420025A234 /* Assets.xcassets */,
 				587EA3BE1DCA3A420025A234 /* LaunchScreen.storyboard */,
 				587EA3C11DCA3A420025A234 /* Info.plist */,
+				5800CBC21DD26C8900DEE58A /* EditWeatherViewController.swift */,
 			);
 			path = iOSRealm;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5800CBC31DD26C8900DEE58A /* EditWeatherViewController.swift in Sources */,
 				5800CBBF1DD25C0A00DEE58A /* WeatherTableViewCell.swift in Sources */,
 				5800CBC11DD25EA600DEE58A /* WeatherTableViewController.swift in Sources */,
 				58ECC7D91DD21579001A9FFA /* Weather.swift in Sources */,
