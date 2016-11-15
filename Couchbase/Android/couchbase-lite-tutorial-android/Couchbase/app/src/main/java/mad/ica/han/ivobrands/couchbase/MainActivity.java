@@ -118,14 +118,15 @@ public class MainActivity extends Activity{
 
     private URL createSyncURL(boolean isEncrypted){
         URL syncURL = null;
-        String host = "https://10.0.2.2";
+        String host = "http://10.0.2.2";
         String port = "4984";
         String dbName = "couchbaseevents";
         try {
-            syncURL = new URL(host + ":" + port + "/" + dbName);
+            syncURL = new URL(host + ":" + port + "/" + dbName + "/");
         } catch (MalformedURLException me) {
             me.printStackTrace();
         }
+        Log.d("URL", syncURL.toString());
         return syncURL;
     }
 
@@ -188,8 +189,8 @@ public class MainActivity extends Activity{
             // Update the document with more data
             Map<String, Object> updatedProperties = new HashMap<String, Object>();
             updatedProperties.putAll(document.getProperties());
-            updatedProperties.put("eventDescription", "Everyone is invited!");
-            updatedProperties.put("address", "123 Elm St.");
+            //updatedProperties.put("eventDescription", "Everyone is invited!");
+            //updatedProperties.put("address", "123 Elm St.");
             // Save to the Couchbase local Couchbase Lite DB
             document.putProperties(updatedProperties);
         } catch (CouchbaseLiteException e) {
@@ -200,7 +201,10 @@ public class MainActivity extends Activity{
     private void outputContents(Database database, String documentId) {
         Document test = database.getDocument(documentId);
         if(null != test){
-            Log.d(TAG, "retrievedDocument=" + String.valueOf(test.getProperties()));        }
+            Log.d(TAG, "retrievedDocument=" + String.valueOf(test.getProperties()));
+            TextView textView = (TextView) findViewById(R.id.text);
+            textView.setText(String.valueOf(test.getProperties()));
+        }
     }
 
     public Database getDatabaseInstance() throws CouchbaseLiteException {
