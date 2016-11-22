@@ -17,8 +17,7 @@
 		557CDBE31DCF473E006B544F /* SQLite2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557CDBE21DCF473E006B544F /* SQLite2Tests.swift */; };
 		557CDBEE1DCF473E006B544F /* SQLite2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557CDBED1DCF473E006B544F /* SQLite2UITests.swift */; };
 		557CDBFD1DCF47FC006B544F /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 557CDBFC1DCF47FC006B544F /* libsqlite3.0.tbd */; };
-		557CDC001DCF4871006B544F /* fmdb in Resources */ = {isa = PBXBuildFile; fileRef = 557CDBFF1DCF4871006B544F /* fmdb */; };
-		557CDC011DCF4879006B544F /* fmdb in Sources */ = {isa = PBXBuildFile; fileRef = 557CDBFF1DCF4871006B544F /* fmdb */; };
+		55F9713E1DD3548300DECBC5 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F9713D1DD3548300DECBC5 /* WeatherModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +57,7 @@
 		557CDBFF1DCF4871006B544F /* fmdb */ = {isa = PBXFileReference; lastKnownFileType = folder; name = fmdb; path = src/fmdb; sourceTree = "<group>"; };
 		557CDC021DCF4912006B544F /* SQLite2-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SQLite2-Bridging-Header.h"; sourceTree = "<group>"; };
 		557CDC061DCF6A2E006B544F /* Student.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = Student.sqlite; path = ../../Student.sqlite; sourceTree = "<group>"; };
+		55F9713D1DD3548300DECBC5 /* WeatherModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				557CDC061DCF6A2E006B544F /* Student.sqlite */,
+				55F9713D1DD3548300DECBC5 /* WeatherModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -276,7 +277,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				557CDBD81DCF473E006B544F /* LaunchScreen.storyboard in Resources */,
-				557CDC001DCF4871006B544F /* fmdb in Resources */,
 				557CDBD51DCF473E006B544F /* Assets.xcassets in Resources */,
 				557CDBD31DCF473E006B544F /* Main.storyboard in Resources */,
 			);
@@ -303,9 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				557CDC011DCF4879006B544F /* fmdb in Sources */,
 				557CDBD01DCF473E006B544F /* ViewController.swift in Sources */,
 				557CDBCE1DCF473E006B544F /* AppDelegate.swift in Sources */,
+				55F9713E1DD3548300DECBC5 /* WeatherModel.swift in Sources */,
 				5543ADDC1DCF6CFA0066CF69 /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
